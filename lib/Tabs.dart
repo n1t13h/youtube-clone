@@ -47,7 +47,7 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
           ),
           IconButton(
             onPressed: () {
-              changeTheme();
+
             },
             icon: Icon(Icons.person),
           ),
