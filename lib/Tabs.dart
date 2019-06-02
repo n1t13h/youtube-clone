@@ -5,7 +5,6 @@ import 'screens/screen2.dart';
 import 'screens/screen3.dart';
 import 'screens/screen4.dart';
 import 'screens/screen5.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 // Main code for all the tabs
 class MyTabs extends StatefulWidget {
@@ -29,14 +28,6 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
     tabcontroller.dispose();
   }
 
-  Future changeTheme() async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'isdark';
-    final value = prefs.getBool(key)==false?true:false;
-    prefs.setBool(key, value);
-    print('saved $value');
-  }
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -55,7 +46,9 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
             icon: Icon(Icons.search),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              changeTheme();
+            },
             icon: Icon(Icons.person),
           ),
         ],

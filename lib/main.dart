@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'Tabs.dart';
 
 void main() => runApp(MyApp());
@@ -11,20 +10,10 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _changeTheme=false;
-  Future _read() async {
-    final prefs = await SharedPreferences.getInstance();
-    final key = 'isdark';
-    final value = prefs.getBool(key);
-    setState(() {
 
-     _changeTheme=value; 
-    });
-  }
   @override
   void initState() {
     super.initState();
-    _read();
   }
 
   @override
@@ -32,7 +21,8 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: "Youtube",
       debugShowCheckedModeBanner: false,
-      theme: _changeTheme==true?ThemeData.dark():ThemeData(primaryColor: Colors.white, accentColor: Colors.black),
+      darkTheme: ThemeData.dark(),
+      theme: ThemeData(primaryColor: Colors.white, accentColor: Colors.black),
       home: MyTabs(),
     );
   }
